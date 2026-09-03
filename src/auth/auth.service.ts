@@ -17,7 +17,7 @@ export interface LoginResponse {
     name: string;
     email: string;
     accessRole: AccessRole;
-    role: string;   // chat persona – included for client convenience
+    role: string; // chat persona – included for client convenience
     status: string;
     avatar: string;
   };
@@ -61,7 +61,7 @@ export class AuthService {
         name: user.name,
         email: user.email,
         accessRole: user.accessRole,
-        role: user.role,    // chat persona – unchanged, returned for client use
+        role: user.role, // chat persona – unchanged, returned for client use
         status: user.status,
         avatar: user.avatar,
       },

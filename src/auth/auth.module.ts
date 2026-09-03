@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { JwtModule } from '@nestjs/jwt';
+import { JwtModule, JwtSignOptions } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AuthController } from './auth.controller';
@@ -20,11 +20,13 @@ import { UsersModule } from '../users/users.module';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
-        secret: configService.get<string>('JWT_SECRET', 'MISSING_JWT_SECRET_SET_ENV'),
+        secret: configService.get<string>(
+          'JWT_SECRET',
+          'MISSING_JWT_SECRET_SET_ENV',
+        ),
         signOptions: {
-          // Cast needed: @nestjs/jwt expects StringValue from the `ms` package,
-          // not a plain string. The value is still read correctly at runtime.
-          expiresIn: configService.get<string>('JWT_EXPIRATION', '8h') as any,
+          expiresIn: (configService.get<string>('JWT_EXPIRATION', '8h') ??
+            '8h') as unknown as JwtSignOptions['expiresIn'],
         },
       }),
     }),

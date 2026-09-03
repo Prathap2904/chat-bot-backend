@@ -26,8 +26,11 @@ async function main() {
   await ds.initialize();
 
   console.log('\n=== COLUMN SCHEMA ===');
-  const columns: { column_name: string; data_type: string; is_nullable: string }[] =
-    await ds.query(`
+  const columns: {
+    column_name: string;
+    data_type: string;
+    is_nullable: string;
+  }[] = await ds.query(`
       SELECT column_name, data_type, is_nullable
       FROM information_schema.columns
       WHERE table_name = 'users'
@@ -36,7 +39,7 @@ async function main() {
   console.table(columns);
 
   console.log('\n=== SEEDED USERS ===');
-  const users = await ds.query(`
+  const users: unknown = await ds.query(`
     SELECT id, name, email, role, "accessRole", status,
            CASE WHEN "passwordHash" IS NOT NULL THEN '*** hashed ***' ELSE NULL END AS "passwordHash"
     FROM users

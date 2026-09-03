@@ -30,7 +30,7 @@ export class UsersService implements OnModuleInit {
         {
           name: 'Olivia Vance',
           email: 'olivia.vance@example.com',
-          role: 'Product Designer',       // chat persona – DO NOT change
+          role: 'Product Designer', // chat persona – DO NOT change
           accessRole: AccessRole.USER,
           status: 'Active' as const,
           avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Olivia',
@@ -39,7 +39,7 @@ export class UsersService implements OnModuleInit {
         {
           name: 'Ethan Hunt',
           email: 'ethan.hunt@example.com',
-          role: 'Lead Developer',         // chat persona – DO NOT change
+          role: 'Lead Developer', // chat persona – DO NOT change
           accessRole: AccessRole.ADMIN,
           status: 'Active' as const,
           avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Ethan',
@@ -48,7 +48,7 @@ export class UsersService implements OnModuleInit {
         {
           name: 'Sophia Reynolds',
           email: 'sophia.r@example.com',
-          role: 'Product Manager',        // chat persona – DO NOT change
+          role: 'Product Manager', // chat persona – DO NOT change
           accessRole: AccessRole.MANAGER,
           status: 'Pending' as const,
           avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Sophia',
@@ -57,7 +57,7 @@ export class UsersService implements OnModuleInit {
         {
           name: 'Marcus Brody',
           email: 'marcus.brody@example.com',
-          role: 'DevOps Engineer',        // chat persona – DO NOT change
+          role: 'DevOps Engineer', // chat persona – DO NOT change
           accessRole: AccessRole.USER,
           status: 'Active' as const,
           avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Marcus',
@@ -66,7 +66,7 @@ export class UsersService implements OnModuleInit {
         {
           name: 'Zoe Jenkins',
           email: 'zoe.j@example.com',
-          role: 'QA Specialist',          // chat persona – DO NOT change
+          role: 'QA Specialist', // chat persona – DO NOT change
           accessRole: AccessRole.USER,
           status: 'Inactive' as const,
           avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Zoe',
@@ -75,7 +75,7 @@ export class UsersService implements OnModuleInit {
         {
           name: 'Liam Neeson',
           email: 'liam.n@example.com',
-          role: 'Support Engineer',       // chat persona – DO NOT change
+          role: 'Support Engineer', // chat persona – DO NOT change
           accessRole: AccessRole.USER,
           status: 'Active' as const,
           avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Liam',
@@ -84,7 +84,7 @@ export class UsersService implements OnModuleInit {
         {
           name: 'Ava Lovelace',
           email: 'ava.l@example.com',
-          role: 'Data Scientist',         // chat persona – DO NOT change
+          role: 'Data Scientist', // chat persona – DO NOT change
           accessRole: AccessRole.MANAGER,
           status: 'Pending' as const,
           avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Ava',
@@ -93,7 +93,7 @@ export class UsersService implements OnModuleInit {
         {
           name: 'Lucas Graham',
           email: 'lucas.g@example.com',
-          role: 'Security Engineer',      // chat persona – DO NOT change
+          role: 'Security Engineer', // chat persona – DO NOT change
           accessRole: AccessRole.ADMIN,
           status: 'Active' as const,
           avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Lucas',

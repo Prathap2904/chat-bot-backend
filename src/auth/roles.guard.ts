@@ -42,7 +42,7 @@ export class RolesGuard implements CanActivate {
       ROLES_KEY,
       [
         context.getHandler(), // method-level decorator takes precedence
-        context.getClass(),   // fallback to controller-level decorator
+        context.getClass(), // fallback to controller-level decorator
       ],
     );
 
@@ -63,7 +63,7 @@ export class RolesGuard implements CanActivate {
     if (!hasRole) {
       throw new ForbiddenException(
         `Access denied. Required role(s): ${requiredRoles.join(', ')}. ` +
-        `Your role: ${user.accessRole}.`,
+          `Your role: ${user.accessRole}.`,
       );
     }
 

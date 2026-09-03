@@ -16,7 +16,11 @@ const AI_POWERED_ROLE = 'Lead Developer';
 
 @WebSocketGateway({
   cors: {
-    origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175'],
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:5174',
+      'http://localhost:5175',
+    ],
     credentials: true,
   },
 })
@@ -37,34 +41,40 @@ export class WebsocketGateway
     this.logger.log('WebSocket Gateway Initialized');
 
     // Periodically change a random user's status and broadcast it
-    setInterval(async () => {
-      try {
-        const users = await this.usersService.findAll();
-        if (users.length === 0) return;
+    setInterval(() => {
+      void (async () => {
+        try {
+          const users = await this.usersService.findAll();
+          if (users.length === 0) return;
 
-        const randomUser = users[Math.floor(Math.random() * users.length)];
-        const statuses: ('Active' | 'Inactive' | 'Pending')[] = [
-          'Active',
-          'Inactive',
-          'Pending',
-        ];
-        // Filter out the current status so it actually changes
-        const availableStatuses = statuses.filter((s) => s !== randomUser.status);
-        const newStatus =
-          availableStatuses[Math.floor(Math.random() * availableStatuses.length)];
+          const randomUser = users[Math.floor(Math.random() * users.length)];
+          const statuses: ('Active' | 'Inactive' | 'Pending')[] = [
+            'Active',
+            'Inactive',
+            'Pending',
+          ];
+          // Filter out the current status so it actually changes
+          const availableStatuses = statuses.filter(
+            (s) => s !== randomUser.status,
+          );
+          const newStatus =
+            availableStatuses[
+              Math.floor(Math.random() * availableStatuses.length)
+            ];
 
-        await this.usersService.updateUserStatus(randomUser.id, newStatus);
-        this.logger.log(
-          `Broadcasting status update: ${randomUser.name} is now ${newStatus}`,
-        );
+          await this.usersService.updateUserStatus(randomUser.id, newStatus);
+          this.logger.log(
+            `Broadcasting status update: ${randomUser.name} is now ${newStatus}`,
+          );
 
-        this.server.emit('user_status_update', {
-          userId: randomUser.id,
-          status: newStatus,
-        });
-      } catch (error) {
-        this.logger.error('Error executing status update broadcast', error);
-      }
+          this.server.emit('user_status_update', {
+            userId: randomUser.id,
+            status: newStatus,
+          });
+        } catch (error) {
+          this.logger.error('Error executing status update broadcast', error);
+        }
+      })();
     }, 15000); // every 15 seconds
   }
 
@@ -180,4 +190,3 @@ export class WebsocketGateway
     );
   }
 }
-

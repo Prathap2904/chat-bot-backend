@@ -1,4 +1,8 @@
-import { Injectable, Logger, InternalServerErrorException } from '@nestjs/common';
+import {
+  Injectable,
+  Logger,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { GoogleGenAI } from '@google/genai';
 
 @Injectable()
@@ -26,7 +30,9 @@ export class AiService {
    * @returns The generated text from Gemini.
    */
   async generateResponse(message: string): Promise<string> {
-    this.logger.log(`Sending message to Gemini: "${message.substring(0, 80)}..."`);
+    this.logger.log(
+      `Sending message to Gemini: "${message.substring(0, 80)}..."`,
+    );
 
     try {
       const response = await this.genAI.models.generateContent({

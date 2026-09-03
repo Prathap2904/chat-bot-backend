@@ -1,4 +1,10 @@
-import { Controller, Get, Logger, HttpException, HttpStatus } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Logger,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 import { AiService } from './ai.service';
 
 @Controller('ai')
@@ -15,8 +21,7 @@ export class AiController {
    */
   @Get('test')
   async test(): Promise<{ prompt: string; response: string }> {
-    const prompt =
-      'Hello, introduce yourself as Ethan Hunt, a Lead Developer.';
+    const prompt = 'Hello, introduce yourself as Ethan Hunt, a Lead Developer.';
 
     this.logger.log(`[TEST] Calling AiService with prompt: "${prompt}"`);
 

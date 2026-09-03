@@ -28,7 +28,10 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       ignoreExpiration: false,
 
       // Secret must match the one used in JwtModule (auth.module.ts)
-      secretOrKey: configService.get<string>('JWT_SECRET', 'MISSING_JWT_SECRET_SET_ENV'),
+      secretOrKey: configService.get<string>(
+        'JWT_SECRET',
+        'MISSING_JWT_SECRET_SET_ENV',
+      ),
     });
   }
 
@@ -42,11 +45,11 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
    * We rename `sub` → `userId` for clarity.
    * We do NOT re-query the database here – the signed token is the source of truth.
    */
-  async validate(payload: {
+  validate(payload: {
     sub: string;
     email: string;
     accessRole: AccessRole;
-  }): Promise<AuthenticatedUser> {
+  }): AuthenticatedUser {
     return {
       userId: payload.sub,
       email: payload.email,
